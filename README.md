@@ -3,13 +3,16 @@
 Aplikasi Web3 untuk pengelolaan dana upacara desa adat secara transparan di blockchain.
 
 Project ini terdiri dari:
+
 - `frontend` (Next.js 16 + React 19 + Ethers v6)
 - `hardhat` (Hardhat 3 + Solidity + TypeScript tests)
 
 ## Fitur Utama
 
 ### Smart Contract
+
 Contract `DanaUpacaraDesaAdat` mendukung:
+
 - Pembuatan campaign dengan target dana
 - Donasi ETH ke campaign aktif
 - Pengajuan request pengeluaran oleh admin campaign
@@ -21,7 +24,9 @@ Contract `DanaUpacaraDesaAdat` mendukung:
 - Pengajuan penarikan sisa dana campaign tertutup (tetap via voting)
 
 ### Frontend
+
 Antarmuka web menyediakan:
+
 - Koneksi wallet (MetaMask)
 - Daftar campaign aktif dan arsip campaign selesai
 - Pembuatan campaign baru
@@ -90,6 +95,7 @@ Catat `Contract Address` dari output deploy.
 ### 5. Sinkronkan ABI + alamat contract ke frontend
 
 Frontend membaca:
+
 - ABI: `frontend/lib/hardhat/DanaUpacaraDesaAdat.json`
 - Address: `frontend/lib/hardhat/config.ts`
 
@@ -115,6 +121,7 @@ Buka `http://localhost:3000`.
 ## Konfigurasi MetaMask untuk Localhost
 
 Tambahkan network lokal bila belum ada:
+
 - Network Name: Hardhat Local
 - RPC URL: `http://127.0.0.1:8545`
 - Chain ID: `31337`
@@ -146,6 +153,7 @@ npm run lint      # Lint code
 ## Deploy ke Sepolia (Opsional)
 
 Di konfigurasi Hardhat, network sepolia memakai:
+
 - `SEPOLIA_RPC_URL`
 - `SEPOLIA_PRIVATE_KEY`
 
