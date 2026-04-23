@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-space-grotesk);
+
+  --color-background: #020617;
+  --color-foreground: #f8fafc;
+  --color-primary: #f97316;
+  --color-accent: #14b8a6;
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+body {
+  background:
+    radial-gradient(
+      1200px 500px at 50% -10%,
+      color-mix(in oklab, var(--color-primary) 22%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      700px 300px at 95% 15%,
+      color-mix(in oklab, var(--color-accent) 18%, transparent),
+      transparent 75%
+    ),
+    var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.bg-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      40rem 26rem at 20% 15%,
+      color-mix(in oklab, var(--color-primary) 18%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      36rem 22rem at 82% 10%,
+      color-mix(in oklab, var(--color-accent) 16%, transparent),
+      transparent 74%
+    ),
+    radial-gradient(
+      60rem 35rem at 50% 115%,
+      color-mix(in oklab, #38bdf8 12%, transparent),
+      transparent 78%
+    );
+  filter: saturate(110%);
+}
+
+.bg-ambient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgb(148 163 184 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(148 163 184 / 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@layer utilities {
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 8s ease infinite;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--color-primary) 55%, white 10%)
+      rgb(15 23 42 / 0.45);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgb(15 23 42 / 0.4);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 2px solid rgb(15 23 42 / 0.6);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-primary) 80%, white 10%),
+      color-mix(in oklab, var(--color-accent) 70%, white 10%)
+    );
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass-panel {
+    @apply bg-slate-900/50 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  }
+}
